@@ -63,8 +63,8 @@ neg_lnL_poiss_constant=function(t){
   
 ############################################################
 # 2) Exponential Poisson rate through time
-neg_lnL_expo_poiss=function(t){
-  FUN=function(X){return(-loglikelihood_any_poiss(times=t,lambda = function(t){return(X[1]+X[2]*exp(-X[2]*t))}))}
+neg_lnL_linear_poiss=function(t){
+  FUN=function(X){return(-loglikelihood_any_poiss(times=t,lambda = function(t){return(X[1]+X[2]*t))}))}
   return(FUN)
 }
 
