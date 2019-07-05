@@ -12,8 +12,8 @@ ML1=optim(par=c(15),fn=fun0)
 
 ############################################################
 # 2) Exponential Poisson rate
-fun_exp_poiss=neg_lnL_expo_poiss(t=times)
-ML2=optim(par=c(0.1,1),fn=fun_exp_poiss)
+fun_lin_poiss=neg_lnL_linear_poiss(t=times)
+ML2=optim(par=c(0.1,1),fn=fun_lin_poiss)
 -ML2
 
 ############################################################
@@ -34,8 +34,8 @@ ML4=optim(par=c(0.1,1),fn=fun_400kyrs_poiss)
 # AIC comparison 4 models, corrected for small sample size
 AICc1=2*(1+ML1$value)+2*1*(1+1)/(length(times)-1-1)
 AICc2=2*(2+ML2$value)+2*2*(2+1)/(length(times)-2-1)
-AICc3=2*(3+ML3$value)+2*3*(3+1)/(length(times)-3-1)
-AICc4=2*(3+ML4$value)+2*3*(3+1)/(length(times)-3-1)
+AICc3=2*(3+ML3$value)+2*2*(2+1)/(length(times)-2-1)
+AICc4=2*(3+ML4$value)+2*2*(2+1)/(length(times)-2-1)
 
 AICc1 ; AICc2 ; AICc3 ; AICc4 
 ML1$par # the parameters of model 1 (probably the one with the lowest AICc) --> there is only one: the constant Poisson rate
